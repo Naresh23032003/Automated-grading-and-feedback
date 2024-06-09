@@ -66,7 +66,7 @@ function fetchAnswerScore($question, $userAnswer, $correctAnswer, $max_score) {
 }
 
 function fetchFeedback($question, $userAnswer, $correctAnswer, $criteria, $max_score, $score) {
-    $apiKey = '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'; // Replace with your Groq API key
+    $apiKey = 'Groq API key'; // Replace with your Groq API key
 
     $data = array(
         "model" => "llama3-8b-8192",
