@@ -2,7 +2,7 @@
 require('fpdf.php'); // Ensure this path is correct and points to the FPDF file
 
 function fetchAnswerScore($question, $userAnswer, $correctAnswer, $max_score) {
-    $apiKey = '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'; // Replace with your Groq API key
+    $apiKey = 'Groq API key'; // Replace with your Groq API key
 
     $models = ["llama3-8b-8192", "gemma-7b-it", "mixtral-8x7b-32768"];
     $scores = [];
@@ -11,8 +11,20 @@ function fetchAnswerScore($question, $userAnswer, $correctAnswer, $max_score) {
         $data = array(
             "model" => $model,
             "messages" => [
-                ["role" => "system", "content" => "You should score the below questions out of 5 marks"],
-                ["role" => "user", "content" => "Assess the response provided below:\nQuestion: $question\nCorrect Answer: $correctAnswer\nUser Answer: $userAnswer\n for a maximum score of 5 dont give more marks than maximum score"]
+                ["role" => "system", "content" => "You should score the below questions out of $max_score marks
+                            Sample Prompts and Responses:
+                            Sample 1:
+                            Prompt: Assess the response provided below:\n Question: How long was Lincoln's legal Career? \n Correct Answer: 23 years \nUser Answer: Life expectancy of men in Finland is 72 years for a maximum score of 4.
+                            Response: 4
+                            Sample 2:
+                            Prompt: Assess the response provided below:\n Question: What is the life expectancy for men in Finland?\n Correct Answer: 75 years \nUser Answer: Life expectancy of men in Finland is 72 years for a maximum score of 4.
+                            Response: 3
+                            Sample 3:
+                            Prompt: Assess the response provided below:\n Question: What does a polar bear's fur provide? \n Correct Answer: A polar bear's fur provides camouflage and insulation \nUser Answer: Polar bear’s fur provides insulation for a maximum score of 4.
+                            Response: 2
+                            "], //Used YouData.ai dataset for few shot prompting
+                ["role" => "user", "content" => "Assess the response provided below:\nQuestion: $question\nCorrect Answer: $correctAnswer\nUser Answer: $userAnswer\n for a maximum score of  $max_score dont give more marks than maximum score.         
+                "]
             ],
             "temperature" => 0
         );
