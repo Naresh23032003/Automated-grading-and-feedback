@@ -35,6 +35,3 @@ Our project aims to revolutionize the grading process by leveraging the power of
 ## Usage
 - **Instructor Interface:** Use this interface to set up grading schemes, view student submissions, and provide feedback.
 - **Student Interface:** Students can submit assignments, view grades, and receive detailed feedback.
-
-## License
-This project is licensed under the [MIT License](LICENSE).
